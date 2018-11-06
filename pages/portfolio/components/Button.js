@@ -2,34 +2,27 @@ import useProgress from '../hooks/useProgress'
 import {useState } from "react";
 import posed from "react-pose";
 
-const Button = posed.div({
+const ButtonContainer = posed.div({
   idle: { scale: 1 },
   hovered: { scale: 1.1 }
 });
 
-const Circle = function() {
+const Circle = function(props) {
   const [hovering, setHovering] = useState(false);
   const [opacity, setOpacity] = useState(1);
+  let action = props.action;
+  console.log(action)
   return (
-    <Button
+    <ButtonContainer
       className='circle'
       style={{ opacity: `${opacity}` }}
       pose={hovering ? "hovered" : "idle"}
       onMouseEnter={() => setHovering(true)}
       onMouseLeave={() => setHovering(false)}
-      onClick={() => {
-        window.scrollTo({
-          top: 385,
-          left: 0,
-          behavior: 'smooth'
-        })
-        setOpacity(0)
-        }
-      }
+      onClick={action}
     >
-      <div className='down-arrow'>&#709;</div>
+      <div className='down-arrow'>{props.icon}</div>
       <style jsx global>{`
-
         .circle {
           background: rgba(255,255,255,1);
           width: 50px;
@@ -50,19 +43,18 @@ const Circle = function() {
           font-family: helvetica;
         }
       `}</style>
-    </Button>
+    </ButtonContainer>
   )
 }
 
-
-export default function ButtonContainer () {
-  let position = useProgress(0,50,1000);
+export default function Button(props) {
+  let position = useProgress(props.start,props.end,props.duration);
 
   return (
     <div>
         <div className='button-container' style={{ opacity: `${position*.03}` }}>
           <div className='button' style={{ right: `${position}%` }}>
-            <Circle />
+            <Circle {...props}/>
           </div>
         </div>
         <style jsx global>{`

@@ -9,6 +9,7 @@ export default ({ children }) => (
       }
       body {
         margin: 0;
+        background: black;
       }
     `}</style>
   </main>

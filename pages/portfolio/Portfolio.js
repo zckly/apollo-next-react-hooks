@@ -7,15 +7,28 @@ import React, {
 
 import Home from './components/Home';
 import Button from './components/Button';
-import Sections from './components/sections/Sections';
+import Sections from './components/Sections';
 import Contact from './components/Contact';
 
 export default function Portfolio() {
 
   return (
-    <div>
+    <div className='portfolio'>
       <Home />
-      <Button start={100} end={50} time={200} />
+      <Button
+        start={0}
+        end={50}
+        duration={1000}
+        icon='&#709;'
+        action={(() => {
+            window.scrollTo({
+              top: 385,
+              left: 0,
+              behavior: 'smooth'
+            })
+          }
+        )}
+      />
       <Sections />
       <Contact />
     </div>
