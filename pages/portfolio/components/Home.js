@@ -8,7 +8,7 @@ export default function Home () {
         Hi! I'm
         <span className='name'> Brian E. Bill</span>
       </h1>
-      <h4 className='sub-headline'>Front End/UI Developer from San Diego</h4>
+      <h4 className='sub-headline'>UI/FE Designer from Bird Rock</h4>
       <style jsx global>{`
         .home {
           text-align: center;

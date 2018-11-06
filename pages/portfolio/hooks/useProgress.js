@@ -1,29 +1,40 @@
 import { useState, useEffect } from "react";
 
-let useProgress = (animate, time) => {
-let [progress, setProgress] = useState(0);
+let useProgress = (start,end,duration) => {
+  let [progress, setProgress] = useState(start);
 
   useEffect(
     () => {
-      if (animate) {
-        let rafId = null;
-        let start = null;
-        let step = timestamp => {
-          if (!start) start = timestamp;
-          let progress = timestamp - start;
-          setProgress(progress);
-          if (progress < time) {
-            rafId = requestAnimationFrame(step);
-          }
-        };
-        rafId = requestAnimationFrame(step);
-        return () => cancelAnimationFrame(rafId);
-      }
+      const getProgress = ({elapsed, total}) => Math.min(elapsed / total, 1);
+      const easeOut = progress => Math.pow(--progress, 5) + 1;
+      const time = {
+        start: performance.now(),
+        total: duration
+      };
+      const finalPosition = 47.5;
+      let rafId = null;
+
+      const step = now => {
+         time.elapsed = now - time.start;
+         const progress = getProgress(time);
+         const easing = easeOut(progress);
+         const position = easing * finalPosition;
+         //element.style.transform = `translate(${position}px)`;
+      // let step = timestamp => {
+      //   if (!start) start = timestamp;
+      //   let progress = timestamp - start;
+        setProgress(position*1000);
+        if (progress < 1) {
+          rafId = requestAnimationFrame(step);
+        }
+      };
+      rafId = requestAnimationFrame(step);
+      return () => cancelAnimationFrame(rafId);
     },
-    [animate, time]
+    [start,end,duration]
   );
 
-  return animate ? Math.min(progress / time, time) : 0;
-};
+  return Math.min(progress / duration, duration);
+}
 
 export default useProgress;
