@@ -1,5 +1,44 @@
-import SectionNav from "./SectionNav";
 import { useState, useEffect } from "react";
+import Button from './Button'
+
+const SectionNav = (props) => {
+  let [ verticalScroll ] = useState(0);
+
+  useEffect(
+    () => {
+
+    }
+  );
+
+  return (
+    <div className='nav-container'>
+      <Button
+        start={0}
+        end={50}
+        duration={1000}
+        icon='&#709;'
+        action={(() => {
+            window.scrollTo({
+              top: 385,
+              left: 0,
+              behavior: 'smooth'
+            })
+          }
+        )}
+      />
+      <style jsx global>{`
+        .nav-container {
+          float: right;
+          margin-right: 50px;
+          margin-top: 150px;
+          height: 100px;
+          width: 50px;
+        }
+      `}</style>
+    </div>
+  )
+}
+
 
 let _sections = [
   {
@@ -20,7 +59,7 @@ let _sections = [
   },
 ]
 
-export default function Sections () {
+export default function Sections (props) {
   let [ index, setIndex ] = useState(0);
   let visible = _sections[index];
   let next = _sections[index]+1;

@@ -5,8 +5,9 @@ import React, {
   useRef
 } from "react";
 
-import Home from './components/Home';
 import Button from './components/Button';
+
+import Home from './components/Home';
 import Sections from './components/Sections';
 import Contact from './components/Contact';
 
