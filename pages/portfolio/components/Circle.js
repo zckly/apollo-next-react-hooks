@@ -1,7 +1,9 @@
 export default function Circle(props) {
+  let h = props.scaleH;
+  let v = props.scaleV;
   return (
     <div className='circle'>
-      <div className='down-arrow'>{props.icon}</div>
+      <div className={props.klass} style={{"transform" : `scale(${h},${v})`}}>{props.icon}</div>
       <style jsx global>{`
         .circle {
           background: rgba(255,255,255,1);
@@ -19,7 +21,18 @@ export default function Circle(props) {
           padding: 10px;
           color: rgba(20,20,20,1);
           font-size: 36px;
-          transform:scale(1.25,1);
+          font-family: helvetica;
+        }
+        .right-arrow {
+          padding: 9px 0 0 3px;
+          color: rgba(20,20,20,1);
+          font-size: 36px;
+          font-family: helvetica;
+        }
+        .up-arrow {
+          padding: 10px;
+          color: rgba(20,20,20,1);
+          font-size: 36px;
           font-family: helvetica;
         }
       `}</style>
