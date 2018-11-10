@@ -1,22 +1,22 @@
 import { useState, useEffect } from "react";
 import useProgress from './hooks/useProgress'
-
 import Button from './components/Button';
 import Home from './components/Home';
 import Sections from './components/Sections';
-import SectionNav from './components/SectionNav';
 import Contact from './components/Contact';
 
 const Portfolio = function() {
-  const [buttonOneOpacity, setButtonOneOpacity] = useState(0);
-  const [sectionNavOpacity, setSectionNavOpacity] = useState(0);
-  const [clickedButtonOne, setClickedButtonOne] = useState(false);
 
-  useEffect(
-    () => {
+  const [buttonOneOpacity, setButtonOneOpacity] = useState(0);
+  const [clickedButtonOne, setClickedButtonOne] = useState(false);
+  useEffect(() => {
       clickedButtonOne ? setButtonOneOpacity(0) : setButtonOneOpacity(1)
-    }, [clickedButtonOne]
-  )
+    }, [clickedButtonOne] );
+
+  const [sectionNavOpacity, setSectionNavOpacity] = useState(0);
+  useEffect(() => {
+      clickedButtonOne ? setSectionNavOpacity(1) : setSectionNavOpacity(0)
+    },[clickedButtonOne] );
 
   return (
     <div className='portfolio'>
@@ -38,7 +38,7 @@ const Portfolio = function() {
                 left: 0,
                 behavior: 'smooth'
               })
-              setClicked(true)
+              setClickedButtonOne(true)
             }
           )}
         />
@@ -49,9 +49,9 @@ const Portfolio = function() {
           }
         `}</style>
       </div>
-      <Sections>
-        <SectionNav />
-      </Sections>
+      <Sections
+        opacity={sectionNavOpacity}
+      />
       <Contact />
     </div>
   )

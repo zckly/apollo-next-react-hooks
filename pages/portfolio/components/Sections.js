@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Button from './Button';
 
 let _sections = [
   {
@@ -13,32 +14,109 @@ let _sections = [
     'order': 2,
     'bg': 'linear-gradient(to bottom right, rgba(86,171,47,1), rgba(168,224,99,1))'
   },
-  {
-    'order': 3,
-    'bg': ''
-  },
 ]
 
 const Sections = function(props) {
   let [ index, setIndex ] = useState(0);
+  let prev = _sections[index-1] || _sections[_sections.length-1];
   let visible = _sections[index];
-  let next = _sections[index]+1;
-  let prev = _sections[index]-1;
-  return (
-    <div className='sections'>
-      <div className='section-bg' style={{ backgroundImage: `${visible.bg}`}}>
+  let next = _sections[index+1];
 
+  console.log(prev)
+
+  const [ width, setWidth ] = useState(0)
+  useEffect(() => {
+    setWidth(window.innerWidth)
+  }, [width])
+
+  return (
+    <div className='sections'
+      style={{
+        "width" : width
+      }}
+    >
+      <div
+        className='nav-container'
+        style={{
+          "opacity" : props.opacity,
+        }}
+      >
+        <Button
+          start={0}
+          end={50}
+          duration={1000}
+          icon='&#707;'
+          scaleH={1}
+          scaleV={1.25}
+          klass='right-arrow'
+          action={(() => {
+              {/*change position by window width*/}
+            }
+          )}
+        />
       </div>
+      <div
+        className='section sections-bg-prev'
+        style={{
+          "backgroundImage": `${prev.bg}`,
+          "width" : width
+        }}
+      />
+      <div
+        className='section sections-bg-visible'
+        style={{
+          "backgroundImage": `${visible.bg}`,
+          "width" : width
+        }}
+      >
+        <div class='section-description'>
+          <h2>This is the project description section</h2>
+        </div>
+        <div class='section-image-container'>
+          <img class='section-image' src='https://images.unsplash.com/photo-1534521989089-2084a311b5be?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c4066a0e11e04fea188cf12f38dd68ee&auto=format&fit=crop&w=1509&q=80' />
+        </div>
+      </div>
+      <div
+        className='section sections-bg-next'
+        style={{
+          "backgroundImage": `${next.bg}`,
+          "width" : width
+        }}
+      />
       <style jsx global>{`
         .sections {
-          height: 600px;
-          width: 100%;
-          margin-top: -18px;
-          z-index: 5;
+          height: 650px;
+          background: rgba(255,255,255,1);
+          display: flex;
+          overflow-x: auto;
           position: relative;
+          z-index:5;
         }
-        .section-bg {
+        .section {
           height: 450px;
+          flex-shrink: 0;
+        }
+        .nav-container {
+          z-index: 5;
+          position: fixed;
+          right: 50px;
+          top: 250px;
+          height: 100px;
+          width: 50px;
+          transition: opacity 1.5s;
+        }
+        .section-description {
+          width: 50%;
+          display: inline-block;
+          text-align:center;
+          color: rgba(255,255,255,.65)
+        }
+        .section-image-container {
+          width: 50%;
+          display: inline-block;
+        }
+        .section-image {
+          width: 80%;
         }
       `}</style>
     </div>

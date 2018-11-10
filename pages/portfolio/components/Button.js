@@ -9,7 +9,6 @@ const ButtonWrapper = posed.div({
 });
 
  const Button = function(props) {
-  console.log(props.opacity)
   let position = useProgress(props.start,props.end,props.duration)
   const [hovering, setHovering] = useState(false);
 
