@@ -5,7 +5,10 @@ import posed from "react-pose";
 
 const ButtonWrapper = posed.div({
   idle: { scale: 1 },
-  hovered: { scale: 1.1 }
+  hovered: { scale: 1.1 },
+  pressable: true,
+  init: { scale: 1 },
+  press: { scale: 0.8 }
 });
 
  const Button = function(props) {
@@ -39,7 +42,7 @@ const ButtonWrapper = posed.div({
           z-index: 10;
           position: absolute;
           top:-25px;
-          right:-100px;
+          right:-50px;
         }
       `}</style>
     </ButtonWrapper>

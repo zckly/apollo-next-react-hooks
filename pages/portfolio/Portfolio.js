@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import useProgress from './hooks/useProgress'
+import useWindowScrollPosition from './hooks/useWindowScrollPosition'
 import Button from './components/Button';
 import Home from './components/Home';
 import Sections from './components/Sections';
@@ -11,12 +12,27 @@ const Portfolio = function() {
   const [clickedButtonOne, setClickedButtonOne] = useState(false);
   useEffect(() => {
       clickedButtonOne ? setButtonOneOpacity(0) : setButtonOneOpacity(1)
-    }, [clickedButtonOne] );
+    }, [clickedButtonOne]
+  );
 
   const [sectionNavOpacity, setSectionNavOpacity] = useState(0);
-  useEffect(() => {
-      clickedButtonOne ? setSectionNavOpacity(1) : setSectionNavOpacity(0)
-    },[clickedButtonOne] );
+  useEffect(
+    () => {
+      clickedButtonOne ? setSectionNavOpacity(1) : setSectionNavOpacity(0);
+    }, [clickedButtonOne]
+  );
+
+  useEffect(
+    () => {
+      if (window.pageYOffset > 380 && window.pageYOffset < 600) {
+        setSectionNavOpacity(1)
+        setButtonOneOpacity(0)
+      } else {
+        setSectionNavOpacity(0)
+        setButtonOneOpacity(1)
+      }
+    }
+  )
 
   return (
     <div className='portfolio'>
@@ -38,7 +54,7 @@ const Portfolio = function() {
                 left: 0,
                 behavior: 'smooth'
               })
-              setClickedButtonOne(true)
+              setTimeout(() => {setClickedButtonOne(true)}, 500)
             }
           )}
         />

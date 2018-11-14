@@ -28,6 +28,15 @@ export default function Circle(props) {
           color: rgba(20,20,20,1);
           font-size: 36px;
           font-family: helvetica;
+          clear: both;
+        }
+        .left-arrow {
+          padding: 9px 0 0 0;
+          margin: 25px 0 0 0;
+          color: rgba(20,20,20,1);
+          font-size: 36px;
+          font-family: helvetica;
+          clear: both;
         }
         .up-arrow {
           padding: 10px;
