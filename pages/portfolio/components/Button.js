@@ -26,7 +26,11 @@ const ButtonWrapper = posed.div({
     >
       <div
         className='button'
-        style={{ right: `${position}%` }}
+        style={{
+          right: `${position}%`,
+          position: props.position,
+          bottom: props.bottom,
+        }}
       >
         <Circle {...props}/>
       </div>
@@ -40,9 +44,6 @@ const ButtonWrapper = posed.div({
         }
         .button {
           z-index: 10;
-          position: absolute;
-          top:-25px;
-          right:-50px;
         }
       `}</style>
     </ButtonWrapper>

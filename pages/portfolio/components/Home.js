@@ -1,6 +1,9 @@
 export default function Home () {
   return (
-    <div className='home'>
+    <section
+      className='home'
+      style={{ "height": "570px" }}
+    >
       <div className='cat-container'>
         <img className='cat' src='https://s3-us-west-2.amazonaws.com/beb-ui/kitten_green.png' />
       </div>
@@ -11,11 +14,12 @@ export default function Home () {
       <h4 className='sub-headline'>UI/FE Designer from Bird Rock</h4>
       <style jsx global>{`
         .home {
+          position: fixed;
           text-align: center;
-          z-index:-10;
+          z-index:0;
           background: rgba(20,20,20,1);
           color: rgba(255,255,255,.9);
-          height: 500px;
+          width: 100%;
         }
         .name {
           color: rgba(123,189,212,1);
@@ -38,6 +42,6 @@ export default function Home () {
           margin-top: -10px;
         }
       `}</style>
-    </div>
+    </section>
   )
 }

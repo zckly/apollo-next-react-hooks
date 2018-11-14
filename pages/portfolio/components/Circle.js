@@ -32,7 +32,6 @@ export default function Circle(props) {
         }
         .left-arrow {
           padding: 9px 0 0 0;
-          margin: 25px 0 0 0;
           color: rgba(20,20,20,1);
           font-size: 36px;
           font-family: helvetica;
