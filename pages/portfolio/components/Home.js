@@ -1,19 +1,22 @@
 export default function Home () {
   return (
     <section
-      className='home'
+      id='home'
       style={{ "height": "570px" }}
     >
-      <div className='cat-container'>
+      <div
+        className='text'
+        style={{ "top" : "171px"}}
+      >
         <img className='cat' src='https://s3-us-west-2.amazonaws.com/beb-ui/kitten_green.png' />
+        <h1 className='headline'>
+          Hi! I'm
+          <span className='name'> Brian E. Bill</span>
+        </h1>
+        <h4 className='sub-headline'>UX/UI Designer from Bird Rock</h4>
       </div>
-      <h1 className='headline'>
-        Hi! I'm
-        <span className='name'> Brian E. Bill</span>
-      </h1>
-      <h4 className='sub-headline'>UI/FE Designer from Bird Rock</h4>
       <style jsx global>{`
-        .home {
+        #home {
           position: fixed;
           text-align: center;
           z-index:0;
@@ -25,9 +28,10 @@ export default function Home () {
           color: rgba(123,189,212,1);
           font-weight: 200;
         }
-        .cat-container {
+        .text {
           margin: auto;
-          padding-top:80px;
+          position: absolute;
+          width: 100%;
         }
         .cat {
           width: 200px;

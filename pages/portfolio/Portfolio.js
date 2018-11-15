@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import useWindowScrollPosition from './hooks/useWindowScrollPosition'
 import Button from './components/Button';
+import Header from './components/Header';
 import Home from './components/Home';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
@@ -35,14 +36,24 @@ const Portfolio = function() {
 
   return (
     <div id='app'>
-      <Home>
-        <Projects opacity={projectsNavOpacity} />
-      </Home>
+      <Header/>
+      <Home/>
+      <div
+        id="home-spacer"
+        style={{ "height" : "570px" }}
+      />
+      <Projects opacity={projectsNavOpacity} />
       <style jsx global>{`
         #app {
           position: absolute;
           overflow: hidden;
           width:100%;
+        }
+        #home-spacer {
+          position: relative;
+          overflow: hidden;
+          z-index: 1;
+          max-width: 1px;
         }
         .button-container {
           position: relative;

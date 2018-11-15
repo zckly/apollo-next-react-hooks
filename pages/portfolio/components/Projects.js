@@ -20,7 +20,7 @@ const Projects = function(props) {
 
   const [ horizontal, setHorizontal ] = useState(width);
   useEffect(() => {
-    let el = document.querySelector('div.projects');
+    let el = document.querySelector('section#projects');
     //set scroll to current selection
     el.scrollTo({
       top: 385,
@@ -30,7 +30,7 @@ const Projects = function(props) {
   });
 
   return (
-    <div className='projects'
+    <section id='projects'
       style={{ "height" : "640px" }}
     >
       <div
@@ -49,10 +49,16 @@ const Projects = function(props) {
           }}
         >
           <div className='project-description'>
-            <h2>{zero.description}</h2>
+            <div className='project-description-text'>
+              <h2>{zero.description}</h2>
+            </div>
           </div>
           <div className='project-image-container'>
-            <img className='project-image' src={zero.img} />
+            <img
+              className='project-image'
+              src={zero.img}
+              style={{ "height" : "100%" }}
+            />
           </div>
         </div>
 
@@ -65,10 +71,16 @@ const Projects = function(props) {
           }}
         >
           <div className='project-description'>
-            <h2>{one.description}</h2>
+            <div className='project-description-text'>
+              <h2>{one.description}</h2>
+            </div>
           </div>
           <div className='project-image-container'>
-            <img className='project-image' src={one.img} />
+            <img
+              className='project-image'
+              src={one.img}
+              style={{ "height" : "100%" }}
+            />
           </div>
         </div>
 
@@ -81,17 +93,24 @@ const Projects = function(props) {
           }}
         >
           <div className='project-description'>
-            <h2>{two.description}</h2>
+            <div className='project-description-text'>
+              <h2>{two.description}</h2>
+            </div>
           </div>
           <div className='project-image-container'>
-            <img className='project-image' src={two.img} />
+            <img
+              className='project-image'
+              src={two.img}
+              style={{ "height" : "100%" }}
+            />
           </div>
         </div>
       </div>
       <style jsx global>{`
-        .projects {
+        #projects {
           background: rgba(255,255,255,1);
           z-index:6;
+          position: relative;
         }
         .holder {
           height: 512px;
@@ -112,24 +131,32 @@ const Projects = function(props) {
           transition: opacity 1s;
         }
         .project-description {
-          width: 50%;
+          width: 40%;
           height: 640px;
-          display: inline-block;
-          text-align:center;
           color: rgba(255,255,255,.65);
-          vertical-align: top;
+          position: absolute;
+          left: 0;
+        }
+        .project-description-text {
+          top: 166px;
+          padding-left: 20%;
+          padding-right: 5%;
+          position: absolute;
+          width: 100%;
         }
         .project-image-container {
-          width: 50%;
-          display: inline-block;
+          width: 60%;
+          position: absolute;
+          left: 40%;
           height: 640px;
         }
-        .project-image {
-          width: 80%;
-          height: 100%
+        .project-image
+          display: block;
+          vertical-align: middle;
+          border: 0;
         }
       `}</style>
-    </div>
+    </section>
   )
 }
 
