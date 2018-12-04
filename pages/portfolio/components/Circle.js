@@ -15,7 +15,7 @@ export default function Circle(props) {
           transition: opacity 0.5s;
         }
         .circle:hover {
-          box-shadow: 0 5px 15px rgba(33,33,33,1);
+          box-shadow: 0 5px 5px rgba(33,33,33,1);
         }
         .down-arrow {
           padding: 10px;

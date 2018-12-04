@@ -17,135 +17,6 @@ import useProgress from "./useProgress";
 
 let SLIDE_DURATION = 3000;
 
-function Carousel(props) {
-  if (typeof window == 'undefined') { return null }
-  return (
-    <section className="Carousel" {...props} />
-  );
-}
-
-function Slides(props) {
-  if (typeof window == 'undefined') { return null }
-  return (
-    <div>
-      <ul {...props} />
-      <style jsx global>{`
-        * {
-          box-sizing: border-box;
-        }
-
-        body {
-          margin: 0;
-          padding: 0;
-          font-family: sans-serif;
-          background: #ddd;
-        }
-
-        a {
-          color: blue;
-        }
-
-        [aria-current="page"] {
-          color: red;
-        }
-
-        .Carousel {
-          position: absolute;
-          left: 0;
-          right: 0;
-          top: 0;
-          bottom: 0;
-        }
-        .SlideNav {
-          position: absolute;
-          bottom: 36px;
-          left: 20px;
-          display: flex;
-          padding: 0;
-          justify-content: center;
-          list-style-type: none;
-        }
-        .Controls {
-          position: absolute;
-          right: 20px;
-          bottom: 50px;
-          display: flex;
-          justify-content: center;
-        }
-      `}</style>
-    </div>
-  )
-}
-
-function Slide({
-    isCurrent,
-    takeFocus,
-    image,
-    id,
-    title,
-    children
-  }) {
-  if (typeof window == 'undefined') { return null }
-  let ref = useRef();
-
-  useEffect(
-    () => {
-      if (isCurrent && takeFocus) {
-        ref.current.focus();
-      }
-    },
-    [isCurrent, takeFocus]
-  );
-
-  return (
-    <li
-      ref={ref}
-      aria-hidden={!isCurrent}
-      tabIndex="-1"
-      aria-labelledby={id}
-      className="Slide"
-      style={{ backgroundImage: `url(${image})` }}
-    >
-      <div className="SlideContent">
-        <h2 id={id}>{title}</h2>
-        {children}
-      </div>
-      <style jsx global>{`
-        .Slide {
-          opacity: 1;
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          list-style-type: none;
-          transition: opacity 200ms ease;
-          background-size: cover;
-          background-repeat: no-repeat;
-          background-position: center center;
-        }
-
-        .Slide[aria-hidden="true"] {
-          opacity: 0;
-          transition-delay: 200ms;
-          z-index: -1;
-        }
-
-        .SlideContent {
-          background: hsla(0, 0%, 0%, 0.5);
-          font-weight: 100;
-          text-shadow: 0px 0px 5px hsla(0, 0%, 0%, 1);
-          color: white;
-          max-width: 500px;
-          padding: 20px;
-          margin-left: 20px;
-          margin-top: 20px;
-        }
-      `}</style>
-    </li>
-  );
-}
-
 function SlideNav(props) {
   if (typeof window == 'undefined') { return null }
   return <ul className="SlideNav" {...props} />;
@@ -261,6 +132,136 @@ function ProgressBar({ animate, time }) {
       `}</style>
     </div>
   );
+}
+
+function Carousel(props) {
+  if (typeof window == 'undefined') { return null }
+  return (
+    <section className="Carousel" {...props} />
+  );
+}
+
+function Slides(props) {
+  if (typeof window == 'undefined') { return null }
+  return (
+    <div>
+      <ul {...props} />
+      <style jsx global>{`
+        * {
+          box-sizing: border-box;
+        }
+
+        body {
+          margin: 0;
+          padding: 0;
+          font-family: sans-serif;
+          background: #ddd;
+        }
+
+        a {
+          color: blue;
+        }
+
+        [aria-current="page"] {
+          color: red;
+        }
+
+        .Carousel {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
+        }
+        .SlideNav {
+          position: absolute;
+          bottom: 36px;
+          left: 20px;
+          display: flex;
+          padding: 0;
+          justify-content: center;
+          list-style-type: none;
+        }
+        .Controls {
+          position: absolute;
+          right: 20px;
+          bottom: 50px;
+          display: flex;
+          justify-content: center;
+        }
+      `}</style>
+    </div>
+  )
+}
+
+function Slide({
+    isCurrent,
+    takeFocus,
+    image,
+    id,
+    title,
+    children
+  }) {
+
+    if (typeof window == 'undefined') { return null }
+    let ref = useRef();
+
+    useEffect(
+      () => {
+        if (isCurrent && takeFocus) {
+          ref.current.focus();
+        }
+      },
+      [isCurrent, takeFocus]
+    );
+
+    return (
+      <li
+        ref={ref}
+        aria-hidden={!isCurrent}
+        tabIndex="-1"
+        aria-labelledby={id}
+        className="Slide"
+        style={{ backgroundImage: `url(${image})` }}
+      >
+        <div className="SlideContent">
+          <h2 id={id}>{title}</h2>
+          {children}
+        </div>
+        <style jsx global>{`
+          .Slide {
+            opacity: 1;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            list-style-type: none;
+            transition: opacity 200ms ease;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+          }
+
+          .Slide[aria-hidden="true"] {
+            opacity: 0;
+            transition-delay: 200ms;
+            z-index: -1;
+          }
+
+          .SlideContent {
+            background: hsla(0, 0%, 0%, 0.5);
+            font-weight: 100;
+            text-shadow: 0px 0px 5px hsla(0, 0%, 0%, 1);
+            color: white;
+            max-width: 500px;
+            padding: 20px;
+            margin-left: 20px;
+            margin-top: 20px;
+          }
+        `}</style>
+      </li>
+    );
 }
 
 export default function CarouselApp() {

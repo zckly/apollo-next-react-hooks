@@ -12,13 +12,15 @@ const ButtonWrapper = posed.div({
 });
 
  const Button = function(props) {
-  let position = useProgress(props.start,props.end,props.duration)
+  // let position = useProgress(props.start,props.end,props.duration)
   const [hovering, setHovering] = useState(false);
 
   return (
     <ButtonWrapper
       className='button-wrapper'
-      style={{ opacity: props.opacity }}
+      style={{
+        "opacity": props.opacity,
+      }}
       pose={hovering ? "hovered" : "idle"}
       onMouseEnter={() => setHovering(true)}
       onMouseLeave={() => setHovering(false)}
@@ -27,23 +29,21 @@ const ButtonWrapper = posed.div({
       <div
         className='button'
         style={{
-          right: `${position}%`,
-          position: props.position,
-          bottom: props.bottom,
+          opacity: props.opacity,
+          zIndex: props.zIndex,
+          position: 'absolute',
+          display: 'block',
+          marginTop: props.marginTop,
+          left: props.left,
+          top: props.top
         }}
       >
         <Circle {...props}/>
       </div>
       <style jsx global>{`
         .button-wrapper {
-          z-index: 10;
-          position: relative;
-          margin-top: -55px;
           cursor: pointer;
           transition: opacity .5s;
-        }
-        .button {
-          z-index: 10;
         }
       `}</style>
     </ButtonWrapper>

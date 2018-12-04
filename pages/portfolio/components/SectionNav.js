@@ -1,75 +1,50 @@
 import { useState, useEffect } from "react";
-
+import Button from './Button';
 
 const SectionNav = function(props) {
-
-  let [ verticalScroll ] = useState(0);
-
-  useEffect(() => {
-
-  });
+  /* button top -> projects */
+  /* button previous -> # */
+  /* button next -> #projects */
+  /* button bottom -> #contact */
+  /* section contact */
+  /* button bottom -> #home */
 
   return (
-
-
-    <div className='button-container'>
-      <Button
-        opacity={buttonOneOpacity}
-        id='button'
-        start={0}
-        end={50}
-        duration={1000}
-        icon='&#709;'
-        scaleH={1.25}
-        scaleV={1}
-        klass='down-arrow'
-        position='absolute'
-        bottom='-25px'
-        action={(() => {
-            window.scrollTo({
-              top: 385,
-              left: 0,
-              behavior: 'smooth'
-            })
-            setTimeout(() => {setClickedButtonOne(true)}, 500)
-          }
-        )}
-      />
-
-
     <div
       className='nav-container'
       style={{
         "opacity" : props.opacity,
+        "zIndex" : "5",
+        "position": "absolute",
+        "right": "75px",
+        "top": "120px"
       }}
     >
       <Button
-        start={0}
-        end={50}
-        duration={1000}
+        opacity=".8"
         icon='&#706;'
         scaleH={1}
         scaleV={1.25}
         klass='left-arrow'
-        bottom='124px'
+        top='100px'
         action={(() => {
-          /*previous - subtract window width*/
-            {setHorizontal(horizontal-width)}
+            //position previous project to left
+            //transition position between current project and previous
+            //transition bg color
           }
         )}
       />
       <Button
-        start={0}
-        end={50}
-        duration={1000}
+        opacity=".8"
         icon='&#707;'
         scaleH={1}
         scaleV={1.25}
         klass='right-arrow'
-        bottom='48px'
+        top='25px'
         action={(() => {
-          /*next - subtract window width*/
-            {setHorizontal(horizontal+width)}
+            //position next project to right
+            //transition position between current project and next
+            //transition bg color
           }
         )}
       />
