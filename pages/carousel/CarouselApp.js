@@ -222,7 +222,7 @@ function Slide({
         tabIndex="-1"
         aria-labelledby={id}
         className="Slide"
-        style={{ backgroundImage: `url(${image})` }}
+        style={{ "backgroundImage": `url(${image})` }}
       >
         <div className="SlideContent">
           <h2 id={id}>{title}</h2>
@@ -270,13 +270,16 @@ export default function CarouselApp() {
     (state, action) => {
       switch (action.type) {
         case "NEXT":
+          return {
+            ...state,
+            currentIndex: (state.currentIndex + slides.length) % slides.length,
+            isPlaying: false
+          };
         case "PROGRESS":
           return {
             ...state,
             isPlaying: action.type === "PROGRESS",
-            currentIndex:
-              (state.currentIndex + 1) %
-              slides.length
+            currentIndex: (state.currentIndex + 1) % slides.length
           };
         case "PAUSE":
           return {
@@ -292,10 +295,7 @@ export default function CarouselApp() {
           return {
             ...state,
             currentIndex:
-              (state.currentIndex -
-                1 +
-                slides.length) %
-              slides.length,
+              (state.currentIndex - 1 + slides.length) % slides.length,
             isPlaying: false
           };
         case "GOTO":

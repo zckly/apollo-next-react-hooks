@@ -139,7 +139,7 @@ const SectionNav = function(props) {
 
 const Portfolio = function() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [buttonOneOpacity, setButtonOneOpacity] = useState(0);
+  const [buttonOneOpacity, setButtonOneOpacity] = useState(1);
   const [clickedButtonOne, setClickedButtonOne] = useState(false);
   useEffect(() => {
       clickedButtonOne ? setButtonOneOpacity(0) : setButtonOneOpacity(1)
@@ -164,8 +164,6 @@ const Portfolio = function() {
       }
     }, []
   )
-
-  console.log(projects[currentIndex].bg)
 
   return (
     <div id='app'>
@@ -222,7 +220,9 @@ const Portfolio = function() {
               isCurrent={index === currentIndex}
             />
           ))}
-          <SectionNav />
+          <SectionNav
+            currentIndex={currentIndex}
+          />
         </div>
       </section>
       <style jsx global>{`
