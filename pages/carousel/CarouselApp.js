@@ -270,11 +270,6 @@ export default function CarouselApp() {
     (state, action) => {
       switch (action.type) {
         case "NEXT":
-          return {
-            ...state,
-            currentIndex: (state.currentIndex + slides.length) % slides.length,
-            isPlaying: false
-          };
         case "PROGRESS":
           return {
             ...state,
@@ -399,6 +394,7 @@ export default function CarouselApp() {
           aria-label="Next Slide"
           onClick={() => {
             dispatch({ type: "NEXT" });
+            console.log(state)
           }}
           children={<FaForward />}
         />

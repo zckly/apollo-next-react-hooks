@@ -5,13 +5,14 @@ import posed from "react-pose";
 
 const ButtonWrapper = posed.div({
   idle: { scale: 1 },
-  hovered: { scale: 1.1 },
+  hovered: { scale: 1.02 },
   pressable: true,
   init: { scale: 1 },
-  press: { scale: 0.8 }
+  press: { scale: 0.98 }
 });
 
  const Button = function(props) {
+   // console.log(props)
   // let position = useProgress(props.start,props.end,props.duration)
   const [hovering, setHovering] = useState(false);
 
