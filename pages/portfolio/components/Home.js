@@ -1,3 +1,8 @@
+import Rocket from './Rocket';
+
+// <img className='cat' src='https://s3-us-west-2.amazonaws.com/beb-ui/kitten_green.png' />
+
+
 export default function Home () {
   return (
     <section
@@ -8,12 +13,12 @@ export default function Home () {
         className='text'
         style={{ "top" : "171px"}}
       >
-        <img className='cat' src='https://s3-us-west-2.amazonaws.com/beb-ui/kitten_green.png' />
+        <Rocket />
         <h1 className='headline'>
           Hi! I'm
           <span className='name'> Brian E. Bill</span>
         </h1>
-        <h4 className='sub-headline'>UX/UI Designer from Bird Rock</h4>
+        <h4 className='sub-headline'>Technophile • Science Fiction Geek</h4>
       </div>
       <style jsx global>{`
         #home {
@@ -25,7 +30,7 @@ export default function Home () {
           width: 100%;
         }
         .name {
-          color: rgba(123,189,212,1);
+          color: #6694BD;
           font-weight: 200;
         }
         .text {
@@ -41,7 +46,7 @@ export default function Home () {
           margin-top: 10px;
         }
         .sub-headline {
-          color: rgba(255,255,255,0.8);
+          color: #3271A7;
           font-size: 17px;
           margin-top: -10px;
         }

@@ -1,3 +1,6 @@
+import Github from './links/Github';
+import LinkedIn from './links/LinkedIn';
+
 export default function Header () {
   return (
     <nav
@@ -9,10 +12,17 @@ export default function Header () {
     >
     <a id="logo" href="#home">
       <img
-        src="https://s3-us-west-2.amazonaws.com/beb-ui/danger-cat.gif"
-        style={{ "width" : "70px", "height" : "70px" }}
+        src="https://s3-us-west-2.amazonaws.com/beb-ui/helmet.gif"
+        style={{
+          "width" : "100%",
+          "height" : "100%"
+        }}
       />
     </a>
+    <div class='links'>
+      <a href="https://www.github.com"><Github /></a>
+      <a href="https://www.linkedin.com"><LinkedIn /></a>
+    </div>
       <style jsx global>{`
         #nav {
           display: block;
@@ -24,12 +34,19 @@ export default function Header () {
           background: #212121;
         }
         #logo {
-          height: 70px;
-          width: 70px;
+          height: 40px;
+          width: 40px;
           display: block;
           position: absolute;
-          left: 50%;
-          margin-left: -35px;
+          left: 20px;
+          padding: 15px;
+        }
+        .links {
+          float: right;
+          padding-right: 40px;
+          padding-top: 10px;
+          height: 35px;
+          width: 250px;
         }
       `}</style>
     </nav>

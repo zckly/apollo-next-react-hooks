@@ -26,7 +26,7 @@ const SectionNav = function(props) {
         scaleH={1}
         scaleV={1.25}
         klass='left-arrow'
-        top='100px'
+        top='70px'
         action={(() => {
             //position previous project to left
             //transition position between current project and previous
@@ -41,6 +41,20 @@ const SectionNav = function(props) {
         scaleV={1.25}
         klass='right-arrow'
         top='25px'
+        action={(() => {
+            //position next project to right
+            //transition position between current project and next
+            //transition bg color
+          }
+        )}
+      />
+      <Button
+        opacity=".8"
+        icon='&#708;'
+        scaleH={1}
+        scaleV={1.25}
+        klass='right-arrow'
+        top='125px'
         action={(() => {
             //position next project to right
             //transition position between current project and next
