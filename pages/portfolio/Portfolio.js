@@ -40,7 +40,7 @@ const Portfolio = function() {
 
   useEffect(
     () => {
-      console.log(state)
+
     }, []
   );
 
@@ -72,7 +72,7 @@ const Portfolio = function() {
           position='absolute'
           left='48.5%'
           zIndex={5}
-          top="-25px"
+          top="-45px"
           action={(() => {
               window.scrollTo({
                 top: 500,
@@ -143,7 +143,7 @@ const Portfolio = function() {
             scaleH={1.25}
             scaleV={1}
             klass='down-arrow'
-            top='300px'
+            top='280px'
             action={(() => {
                 window.scrollTo({
                   top: 1050,

@@ -8,7 +8,6 @@ const Project = function({
   id
 }) {
   if (isCurrent) {
-    console.log(bg)
     return (
       <div
         id='holder'

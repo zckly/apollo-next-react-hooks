@@ -18,7 +18,7 @@ export default function Home () {
           Hi! I'm
           <span className='name'> Brian E. Bill</span>
         </h1>
-        <h4 className='sub-headline'>Technophile • Science Fiction Geek</h4>
+        <h4 className='sub-headline'>Technophile •• Science Fiction Geek</h4>
       </div>
       <style jsx global>{`
         #home {
@@ -43,12 +43,12 @@ export default function Home () {
         }
         .headline {
           font-size: 26px;
-          margin-top: 10px;
+          margin-top: 20px;
         }
         .sub-headline {
           color: #3271A7;
-          font-size: 17px;
-          margin-top: -10px;
+          font-size: 15.78px;
+          margin-top: -17px;
         }
       `}</style>
     </section>

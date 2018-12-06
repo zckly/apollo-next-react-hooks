@@ -12,8 +12,13 @@ export default function Contact () {
       }}
     >
       <h2>Contact Brian</h2>
+      <h3
+        style={{ "marginTop": "-15px"}}
+      >
+        Full Stack Engineer
+      </h3>
       <p>310-490-2250</p>
-      <p>brianeebill@gmail.com</p>
+      <p>lumeo@me.com</p>
       <a href="#">Download resumé</a>
       <style jsx global>{`
         #contact {

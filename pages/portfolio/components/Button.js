@@ -5,10 +5,10 @@ import posed from "react-pose";
 
 const ButtonWrapper = posed.div({
   idle: { scale: 1 },
-  hovered: { scale: 1.02 },
+  hovered: { scale: 1.01 },
   pressable: true,
   init: { scale: 1 },
-  press: { scale: 0.98 }
+  press: { scale: 0.99 }
 });
 
  const Button = function(props) {

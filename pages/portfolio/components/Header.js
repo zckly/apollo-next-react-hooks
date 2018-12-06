@@ -19,7 +19,7 @@ export default function Header () {
         }}
       />
     </a>
-    <div class='links'>
+    <div className='links'>
       <a href="https://www.github.com"><Github /></a>
       <a href="https://www.linkedin.com"><LinkedIn /></a>
     </div>
